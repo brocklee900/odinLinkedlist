@@ -1,5 +1,7 @@
 
-function node(value = null, next = null) {
+function createNode(value = null) {
+
+    let next = null;
 
     return {
         get value() {
@@ -21,4 +23,4 @@ function node(value = null, next = null) {
 
 };
 
-export {node};
+export {createNode};
