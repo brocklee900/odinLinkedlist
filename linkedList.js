@@ -110,9 +110,55 @@ function createLinkedList(head = null, tail = null) {
             string += `(${current.value})`;
             current = current.next;
         }
-        string += "-> null";
+
+        if (string != "") {
+            string += " -> ";
+        }
+        string += "null";
 
         return string;
+    }
+
+    function insertAt(value, index) {
+        if (index > size) {
+            append(value);
+        } else if (index == 0) {
+            prepend(value);
+        } else {
+            let current = head;
+
+            while (current != null && index-1 > 0) {
+                current = current.next;
+                index -= 1;
+            }
+
+            let node = createNode(value);
+            let temp = current.next;
+            current.next = node;
+            node.next = temp;
+            adjustSize(1);
+        }
+    };
+
+    function removeAt(index) {
+        if (index >= size) {
+            console.log("index out of array scope");
+        } else if (index == 0) {
+            head = head.next;
+            adjustSize(-1);
+        } else {
+            let previous = head;
+            let current = head.next;
+
+            while (current != null && index-1 > 0) {
+                previous = current;
+                current = current.next;
+                index -= 1;
+            }
+            
+            previous.next = current.next;
+            adjustSize(-1);
+        }
     }
 
 
@@ -124,6 +170,8 @@ function createLinkedList(head = null, tail = null) {
         contains,
         find,
         toString,
+        insertAt,
+        removeAt,
         get head() {
             return head;
         },

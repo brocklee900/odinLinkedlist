@@ -1,16 +1,13 @@
 
 import { createLinkedList } from "./linkedList.js";
 
-console.log("woah");
+const list = createLinkedList();
 
-let l = createLinkedList();
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
 
-console.log(l);
-
-l.append(34);
-l.append(345);
-l.append("wowee");
-l.append(111);
-l.append(33333);
-
-console.log(l.toString());
+console.log(list.toString());
